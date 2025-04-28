@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject talkPanel;
     public GameObject scanObject;
     public DialogueManager dialogueManager;
+    public QuestManager questManager;
 
     public bool isAction;
     public int dialIndex;
@@ -25,11 +26,14 @@ public class GameManager : MonoBehaviour
 
     void Talk(int id, bool isNpc)
     {
-        string talkData = dialogueManager.GetDialogue(id, dialIndex);
+        int questTalkIndex = questManager.GetQuestDialogIndex(id);
+
+        string talkData = dialogueManager.GetDialogue(id + questTalkIndex, dialIndex);
         if (talkData == null)
         {
             isAction = false;
             dialIndex = 0;
+            Debug.Log(questManager.CheckQuest(id));
             return;
         }
         if (isNpc)
