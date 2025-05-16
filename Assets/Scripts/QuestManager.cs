@@ -46,13 +46,18 @@ public class QuestManager : MonoBehaviour
         return questList[questId].questName;
     }
 
+    public string CheckQuest()
+    {
+        return questList[questId].questName;
+    }
+
     void NextQuest()
     {
         questId += 10;
         questActionIndex = 0;
     }
 
-    void ControlObject()
+    public void ControlObject()
     {
         switch(questId)
         {
@@ -61,8 +66,13 @@ public class QuestManager : MonoBehaviour
                     questObject[0].SetActive(true);
                 break;
             case 20:
-                if (questActionIndex == 1)
-                    questObject[0].SetActive(false);
+                if (questActionIndex == 0)
+                {
+                    questObject[0].SetActive(true);
+                }
+                else if (questActionIndex == 1)
+                        questObject[0].SetActive(false);
+                
                 break;
         }
     }

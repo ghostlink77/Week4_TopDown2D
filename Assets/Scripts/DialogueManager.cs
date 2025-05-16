@@ -45,13 +45,11 @@ public class DialogueManager : MonoBehaviour
         {
             if (!dialData.ContainsKey(id-id%10))
             {
-                if (index == dialData[id - id % 100].Length) return null;
-                else return dialData[id - id % 100][index];
+                return GetDialogue(id - id % 100, index);
             }
             else 
             {
-                if (index == dialData[id - id % 10].Length) return null;
-                else return dialData[id - id % 10][index];
+                return GetDialogue(id - id % 10, index);
             }
         }
 
